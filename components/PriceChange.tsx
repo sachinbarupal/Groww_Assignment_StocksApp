@@ -5,7 +5,12 @@ import { View } from "./Themed";
 export function PriceChange({ percentage }: { percentage: number }) {
   return (
     <View
-      style={{ display: "flex", flexDirection: "row", alignItems: "center" }}
+      style={{
+        display: "flex",
+        flexDirection: "row",
+        alignItems: "center",
+        backgroundColor: "transparent",
+      }}
     >
       {percentage >= 0 ? (
         <>

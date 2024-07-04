@@ -59,7 +59,7 @@ export default function TabLayout() {
                 placeholder="Search Stocks...."
                 disabled
                 mode="outlined"
-                // left={<TextInput.Icon icon={"magnify"} />}
+                left={<TextInput.Icon icon={"magnify"} />}
                 onPressIn={() => router.push("/search")}
               />
             </Pressable>
@@ -74,12 +74,6 @@ export default function TabLayout() {
             bottom: 0,
             textAlignVertical: "center",
             fontSize: 20,
-          },
-          tabBarItemStyle: {
-            borderRightWidth: 1,
-            borderRightColor: "gray",
-            // borderRadius: 5,
-            marginTop: 10,
           },
           title: "Top Losers",
           // tabBarIcon: ({ color }) => (
@@ -98,7 +92,7 @@ export default function TabLayout() {
                 placeholder="Search Stocks...."
                 disabled
                 mode="outlined"
-                // left={<TextInput.Icon icon={"magnify"} />}
+                left={<TextInput.Icon icon={"magnify"} />}
                 onPressIn={() => router.push("/search")}
               />
             </Pressable>

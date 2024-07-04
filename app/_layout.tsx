@@ -1,18 +1,20 @@
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Ionicons from "@expo/vector-icons/Ionicons";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { router, Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
 
 import { useColorScheme } from "@/components/useColorScheme";
-import { PaperProvider } from "react-native-paper";
+import { PaperProvider, TextInput } from "react-native-paper";
 import { darkTheme, lightTheme } from "@/theme";
+import { View } from "react-native";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -60,8 +62,43 @@ function RootLayoutNav() {
       <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-          {/* <Stack.Screen name="search" options={{ headerShown: false }} /> */}
-          {/* <Stack.Screen name="[ticker]" options={{ headerShown: false }} /> */}
+          <Stack.Screen
+            name="search"
+            options={{
+              header: () => (
+                <View
+                  style={{
+                    display: "flex",
+                    flexDirection: "row",
+                    alignItems: "center",
+                    gap: 10,
+                    marginLeft: "auto",
+                    paddingHorizontal: 20,
+                    paddingTop: 50,
+                    backgroundColor: "black",
+                  }}
+                >
+                  <Ionicons
+                    name="arrow-back"
+                    size={30}
+                    color={colorScheme === "dark" ? "white" : "black"}
+                    onPress={() => router.back()}
+                  />
+                  <TextInput
+                    autoFocus
+                    mode="outlined"
+                    placeholder="Search Stocks...."
+                    right={<TextInput.Icon icon={"magnify"} />}
+                    style={{ width: "90%" }}
+                    outlineColor="transparent"
+                    activeOutlineColor="transparent"
+                    dense
+                  />
+                </View>
+              ),
+            }}
+          />
+          <Stack.Screen name="[ticker]" options={{ headerShown: false }} />
         </Stack>
       </ThemeProvider>
     </PaperProvider>

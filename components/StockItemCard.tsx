@@ -4,15 +4,19 @@ import { router } from "expo-router";
 import { Pressable, StyleSheet, Platform } from "react-native";
 import { Text } from "react-native-paper";
 import { PriceChange } from "./PriceChange";
+import { useColorScheme } from "@/components/useColorScheme";
+import { theme } from "@/theme";
 
-// https://financialmodelingprep.com/image-stock/AAPL.png
 export function StockItemCard(stock: Stock) {
+  const colorScheme = useColorScheme();
+
+  const currentTheme =
+    colorScheme === "light" ? theme.light.colors : theme.dark.colors;
   return (
     <Pressable
-      style={[styles.item]}
+      style={[styles.item, { backgroundColor: currentTheme.background }]}
       onPress={() => router.push(`/${stock.ticker}`)}
     >
-      {/* <Text>{stock.ticker}</Text> */}
       <Image
         source={
           "https://icon2.cleanpng.com/20240216/ikb/transparent-google-logo-google-logo-with-multicolored-g-and-1710875587855.webp"
@@ -36,13 +40,12 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 0,
     // height: 150,
-    backgroundColor: "white",
     borderRadius: 4,
-    // elevation: 4,
-    // shadowColor: "black",
-    // shadowOpacity: 0.25,
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowRadius: 8,
-    // overflow: Platform.OS === "android" ? "hidden" : "visible",
+    elevation: 4,
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
+    overflow: Platform.OS === "android" ? "hidden" : "visible",
   },
 });

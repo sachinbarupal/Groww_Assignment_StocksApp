@@ -9,7 +9,7 @@ import { useEffect, useState } from "react";
 import { FlatList, Pressable, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
 
-export default function HomeScreen() {
+export default function TopLosersScreen() {
   const stocks = data.top_gainers;
 
   useEffect(() => {
