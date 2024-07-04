@@ -1,18 +1,19 @@
-import React from 'react';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import { Link, Tabs } from 'expo-router';
-import { Pressable } from 'react-native';
+import React from "react";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+import { Link, router, Tabs } from "expo-router";
+import { Pressable } from "react-native";
+const img = "../../assets/images/download.png";
+import Colors from "@/constants/Colors";
+import { useColorScheme } from "@/components/useColorScheme";
+import { useClientOnlyValue } from "@/components/useClientOnlyValue";
+import { TextInput } from "react-native-paper";
+import { Image } from "expo-image";
 
-import Colors from '@/constants/Colors';
-import { useColorScheme } from '@/components/useColorScheme';
-import { useClientOnlyValue } from '@/components/useClientOnlyValue';
-
-// You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
 function TabBarIcon(props: {
-  name: React.ComponentProps<typeof FontAwesome>['name'];
+  name: React.ComponentProps<typeof MaterialIcons>["name"];
   color: string;
 }) {
-  return <FontAwesome size={28} style={{ marginBottom: -3 }} {...props} />;
+  return <MaterialIcons size={28} style={{ marginBottom: -3 }} {...props} />;
 }
 
 export default function TabLayout() {
@@ -21,37 +22,87 @@ export default function TabLayout() {
   return (
     <Tabs
       screenOptions={{
-        tabBarActiveTintColor: Colors[colorScheme ?? 'light'].tint,
-        // Disable the static render of the header on web
-        // to prevent a hydration error in React Navigation v6.
+        tabBarActiveTintColor: Colors[colorScheme ?? "light"].tint,
         headerShown: useClientOnlyValue(false, true),
-      }}>
+        tabBarIconStyle: { display: "none" },
+      }}
+    >
       <Tabs.Screen
         name="index"
         options={{
-          title: 'Tab One',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
-          headerRight: () => (
-            <Link href="/modal" asChild>
-              <Pressable>
-                {({ pressed }) => (
-                  <FontAwesome
-                    name="info-circle"
-                    size={25}
-                    color={Colors[colorScheme ?? 'light'].text}
-                    style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                  />
-                )}
-              </Pressable>
-            </Link>
+          tabBarLabelStyle: {
+            position: "absolute",
+            bottom: 0,
+            textAlignVertical: "center",
+            fontSize: 20,
+          },
+          tabBarItemStyle: {
+            borderRightWidth: 1,
+            borderRightColor: "gray",
+            // borderRadius: 5,
+            marginTop: 10,
+          },
+          title: "Top Gainers",
+          // tabBarIcon: ({ color }) => (
+          //   // <TabBarIcon name="home" color={color} />,
+          //   <Image
+          //     source={require("../../assets/images/trending.png")}
+          //     style={{ width: 30, height: 30 }}
+          //   />
+          // ),
+          header: () => (
+            <Pressable
+              onPress={() => router.push("/search")}
+              style={{ width: "100%", paddingHorizontal: 20, paddingTop: 50 }}
+            >
+              <TextInput
+                placeholder="Search Stocks...."
+                disabled
+                mode="outlined"
+                // left={<TextInput.Icon icon={"magnify"} />}
+                onPressIn={() => router.push("/search")}
+              />
+            </Pressable>
           ),
         }}
       />
       <Tabs.Screen
-        name="two"
+        name="topLosers"
         options={{
-          title: 'Tab Two',
-          tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+          tabBarLabelStyle: {
+            position: "absolute",
+            bottom: 0,
+            textAlignVertical: "center",
+            fontSize: 20,
+          },
+          tabBarItemStyle: {
+            borderRightWidth: 1,
+            borderRightColor: "gray",
+            // borderRadius: 5,
+            marginTop: 10,
+          },
+          title: "Top Losers",
+          // tabBarIcon: ({ color }) => (
+          //   // <TabBarIcon name="home" color={color} />,
+          //   <Image
+          //     source={require("../../assets/images/trending.png")}
+          //     style={{ width: 30, height: 30 }}
+          //   />
+          // ),
+          header: () => (
+            <Pressable
+              onPress={() => router.push("/search")}
+              style={{ width: "100%", paddingHorizontal: 20, paddingTop: 50 }}
+            >
+              <TextInput
+                placeholder="Search Stocks...."
+                disabled
+                mode="outlined"
+                // left={<TextInput.Icon icon={"magnify"} />}
+                onPressIn={() => router.push("/search")}
+              />
+            </Pressable>
+          ),
         }}
       />
     </Tabs>
