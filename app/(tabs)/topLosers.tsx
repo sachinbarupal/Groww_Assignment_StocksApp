@@ -10,7 +10,7 @@ import { FlatList, Pressable, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
 
 export default function TopLosersScreen() {
-  const stocks = data.top_gainers;
+  const stocks = data.top_losers;
 
   useEffect(() => {
     // fetchGainers();

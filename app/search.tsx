@@ -1,7 +1,43 @@
-import { StyleSheet, View } from "react-native";
+import { useContext, useEffect } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
+import { SearchContext } from "./_layout";
+import { Text } from "react-native-paper";
+import { StockItemCard } from "@/components/StockItemCard";
 
 export default function SearchScreen() {
-  return <View style={styles.container}></View>;
+  const { searchQuery, setSearchQuery, searchedStocks, setSearchedStocks } =
+    useContext(SearchContext);
+
+  useEffect(() => {
+    setSearchQuery("");
+    setSearchedStocks([]);
+  }, []);
+
+  if (!searchQuery && searchedStocks.length === 0)
+    return (
+      <View style={styles.container}>
+        <Text variant="titleLarge" style={{ fontWeight: "bold" }}>
+          Search Stocks...
+        </Text>
+      </View>
+    );
+  if (searchedStocks.length === 0)
+    return (
+      <View style={styles.container}>
+        <Text variant="titleLarge" style={{ fontWeight: "bold" }}>
+          No Stocks Found...
+        </Text>
+      </View>
+    );
+
+  return (
+    <FlatList
+      data={searchedStocks}
+      keyExtractor={(Item) => Item.ticker}
+      numColumns={2}
+      renderItem={({ item }) => <StockItemCard {...item} />}
+    />
+  );
 }
 
 const styles = StyleSheet.create({

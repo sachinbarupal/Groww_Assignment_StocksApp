@@ -9,13 +9,6 @@ import { useClientOnlyValue } from "@/components/useClientOnlyValue";
 import { TextInput } from "react-native-paper";
 import { Image } from "expo-image";
 
-function TabBarIcon(props: {
-  name: React.ComponentProps<typeof MaterialIcons>["name"];
-  color: string;
-}) {
-  return <MaterialIcons size={28} style={{ marginBottom: -3 }} {...props} />;
-}
-
 export default function TabLayout() {
   const colorScheme = useColorScheme();
 
