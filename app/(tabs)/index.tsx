@@ -1,27 +1,29 @@
 import { data } from "@/api_data";
 import { StockItemCard } from "@/components/StockItemCard";
-import { useEffect } from "react";
+import { Stock } from "@/types";
+import { useEffect, useState } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
 
 export default function HomeScreen() {
-  const stocks = data.top_gainers;
+  const [stocks, setStocks] = useState<Stock[]>([]);
 
   useEffect(() => {
-    // fetchGainers();
+    fetchGainers();
   }, []);
 
-  // const fetchGainers = async () => {
-  //   const res = await fetch(
-  //     "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=OHEFTTH4A7JWLUNR"
-  //   );
-  //   const data: any = await res.json();
-  //   // console.log(data);
-  //   setStocks(data.top_gainers);
-  // };
+  const fetchGainers = async () => {
+    const res = await fetch(
+      "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=OHEFTTH4A7JWLUNR"
+    );
+    const { top_gainers }: { top_gainers: Stock[] } = await res.json();
+    // console.log(top_gainers);
+    setStocks(top_gainers);
+    // setStocks(data.top_gainers);
+  };
 
   return (
-    <View style={{ flex: 1, paddingTop: 30, paddingHorizontal: 10 }}>
+    <View style={{ flex: 1, paddingTop: 10, paddingHorizontal: 10 }}>
       <Text
         variant="titleLarge"
         style={{

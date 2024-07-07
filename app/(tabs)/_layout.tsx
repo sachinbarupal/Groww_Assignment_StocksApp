@@ -25,8 +25,9 @@ export default function TabLayout() {
         options={{
           tabBarLabelStyle: {
             position: "absolute",
-            bottom: 0,
-            textAlignVertical: "center",
+            // bottom: 0,
+            top: 0,
+            // textAlignVertical: "center",
             fontSize: 20,
           },
           tabBarItemStyle: {
@@ -46,7 +47,13 @@ export default function TabLayout() {
           header: () => (
             <Pressable
               onPress={() => router.push("/search")}
-              style={{ width: "100%", paddingHorizontal: 20, paddingTop: 50 }}
+              style={{
+                width: "100%",
+                paddingHorizontal: 20,
+                paddingBottom: 10,
+                borderBottomWidth: 1,
+                paddingTop: 50,
+              }}
             >
               <TextInput
                 placeholder="Search Stocks...."
@@ -64,8 +71,11 @@ export default function TabLayout() {
         options={{
           tabBarLabelStyle: {
             position: "absolute",
-            bottom: 0,
-            textAlignVertical: "center",
+            // bottom: 0,
+            top: 0,
+            marginTop: 10,
+
+            // textAlignVertical: "center",
             fontSize: 20,
           },
           title: "Top Losers",
@@ -79,7 +89,13 @@ export default function TabLayout() {
           header: () => (
             <Pressable
               onPress={() => router.push("/search")}
-              style={{ width: "100%", paddingHorizontal: 20, paddingTop: 50 }}
+              style={{
+                width: "100%",
+                paddingHorizontal: 20,
+                paddingTop: 50,
+                paddingBottom: 10,
+                borderBottomWidth: 1,
+              }}
             >
               <TextInput
                 placeholder="Search Stocks...."

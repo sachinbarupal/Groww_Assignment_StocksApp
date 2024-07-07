@@ -10,23 +10,25 @@ import { FlatList, Pressable, StyleSheet, View } from "react-native";
 import { Text } from "react-native-paper";
 
 export default function TopLosersScreen() {
-  const stocks = data.top_losers;
+  // const stocks = data.top_losers;
+  const [stocks, setStocks] = useState<Stock[]>([]);
 
   useEffect(() => {
-    // fetchGainers();
+    fetchGainers();
   }, []);
 
-  // const fetchGainers = async () => {
-  //   const res = await fetch(
-  //     "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=OHEFTTH4A7JWLUNR"
-  //   );
-  //   const data: any = await res.json();
-  //   // console.log(data);
-  //   setStocks(data.top_gainers);
-  // };
+  const fetchGainers = async () => {
+    const res = await fetch(
+      "https://www.alphavantage.co/query?function=TOP_GAINERS_LOSERS&apikey=OHEFTTH4A7JWLUNR"
+    );
+    const { top_losers }: { top_losers: Stock[] } = await res.json();
+    console.log(top_losers);
+    setStocks(top_losers);
+    // setStocks(data.top_losers);
+  };
 
   return (
-    <View style={{ flex: 1, paddingTop: 30, paddingHorizontal: 10 }}>
+    <View style={{ flex: 1, paddingTop: 10, paddingHorizontal: 10 }}>
       <Text
         variant="titleLarge"
         style={{

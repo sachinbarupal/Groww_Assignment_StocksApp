@@ -8,7 +8,7 @@ export function PriceChange({ percentage }: { percentage: number }) {
       style={{
         display: "flex",
         flexDirection: "row",
-        alignItems: "center",
+        alignItems: "flex-start",
         backgroundColor: "transparent",
       }}
     >
