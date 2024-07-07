@@ -15,7 +15,7 @@ export function StockItemCard(stock: Stock) {
     colorScheme === "light" ? theme.light.colors : theme.dark.colors;
   return (
     <Pressable
-      style={[styles.item, { borderColor: currentTheme.background }]}
+      style={[styles.item, { backgroundColor: "white" }]}
       onPress={() =>
         router.push({
           pathname: `/${stock.ticker}`,
@@ -50,15 +50,15 @@ const styles = StyleSheet.create({
     padding: 10,
     paddingBottom: 0,
     // height: 150,
-    borderWidth: 1,
+    // borderWidth: 1,
 
     // backgroundColor: "transparent",
     borderRadius: 4,
-    // elevation: 4,
-    // shadowColor: "black",
-    // shadowOpacity: 0.25,
-    // shadowOffset: { width: 0, height: 2 },
-    // shadowRadius: 8,
+    elevation: 4,
+    shadowColor: "black",
+    shadowOpacity: 0.25,
+    shadowOffset: { width: 0, height: 2 },
+    shadowRadius: 8,
     overflow: Platform.OS === "android" ? "hidden" : "visible",
   },
 });

@@ -120,7 +120,7 @@ export default function Chart({ ticker }: { ticker: string }) {
     //   let value: any = entry[1];
 
     //   tmp_data.push({
-    //     value: parseFloat(value["4. close"]),
+    //     value: parseFloatvalue["4. close"],
     //     date: key,
     //   });
     //   //   console.log(key, value);
@@ -153,6 +153,7 @@ export default function Chart({ ticker }: { ticker: string }) {
           rotateLabel
           width={250}
           hideDataPoints
+          spacing={10}
           color="#00ff83"
           thickness={2}
           startFillColor="rgba(20,105,81,0.3)"
@@ -160,6 +161,8 @@ export default function Chart({ ticker }: { ticker: string }) {
           startOpacity={0.9}
           endOpacity={0.2}
           initialSpacing={0}
+          noOfSections={6}
+          maxValue={600}
           yAxisColor="white"
           yAxisThickness={0}
           rulesType="solid"
@@ -168,13 +171,21 @@ export default function Chart({ ticker }: { ticker: string }) {
           xAxisColor="lightgray"
           pointerConfig={{
             pointerStripHeight: 160,
+
             pointerStripColor: "lightgray",
+
             pointerStripWidth: 2,
+
             pointerColor: "lightgray",
+
             radius: 6,
+
             pointerLabelWidth: 100,
+
             pointerLabelHeight: 90,
+
             activatePointersOnLongPress: true,
+
             autoAdjustPointerLabelPosition: false,
           }}
         />

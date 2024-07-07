@@ -46,26 +46,3 @@ export default function HomeScreen() {
     // </View>
   );
 }
-
-const styles = StyleSheet.create({
-  app: {
-    flex: 2, // the number of columns you want to devide the screen into
-    marginHorizontal: "auto",
-    width: 400,
-  },
-
-  container: {
-    flex: 1,
-    alignItems: "center",
-    justifyContent: "center",
-  },
-  title: {
-    fontSize: 20,
-    fontWeight: "bold",
-  },
-  separator: {
-    marginVertical: 30,
-    height: 1,
-    width: "80%",
-  },
-});
